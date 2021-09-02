@@ -22,6 +22,11 @@ dependencies {
     implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '3.0.2'
     implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '3.0.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //for security
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.4'
+    implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.5.2'
+
 }
 
 test {
