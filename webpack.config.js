@@ -6,7 +6,6 @@ module.exports = {
   devtool: 'source-map',
   entry: path.join(__dirname, 'src', 'main', 'resources', 'static', 'js', 'main.js'),
   devServer: {
-    // contentBase: './dist',
     compress: true,
     port: 8000,
     allowedHosts: [

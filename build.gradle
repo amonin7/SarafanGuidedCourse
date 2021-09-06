@@ -33,6 +33,10 @@ dependencies {
     //for saving user session
     implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '2.5.2'
 
+    //for websockets
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.5.4'
+
+
 }
 
 test {
