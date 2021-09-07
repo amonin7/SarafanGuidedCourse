@@ -1,13 +1,14 @@
 <template>
-    <div style="position: relative; width: 300px;">
+    <v-layout align-space-around justify-start column>
         <message-form :messages="messages" :messageAttr="message" />
-        <message-row v-for="message in messages"
+        <message-row v-for="message in sortedMessages"
                      :key="message.id"
                      :message="message"
                      :editMessage="editMessage"
                      :deleteMessage="deleteMessage"
-                     :messages="messages" />
-    </div>
+                     :messages="messages"
+                     :delButton="delButton"   />
+    </v-layout>
 
 </template>
 
@@ -16,7 +17,7 @@
     import MessageRow from 'components/messages/MessageRow.vue'
 
     export default {
-        props: ['messages'],
+        props: ['messages', 'delButton'],
         components: {
             MessageRow,
             MessageForm
@@ -24,6 +25,11 @@
         data() {
             return {
                 message: null
+            }
+        },
+        computed: {
+            sortedMessages() {
+                return this.messages.sort((a, b) => -(a.id - b.id))
             }
         },
         methods: {
