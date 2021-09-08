@@ -16,7 +16,7 @@ import java.util.HashMap;
 @RequestMapping("/")
 public class MainController {
 
-    private MessageRepo messageRepo;
+    private final MessageRepo messageRepo;
 
     @Value("${spring.profiles.active}")
     private String profile;

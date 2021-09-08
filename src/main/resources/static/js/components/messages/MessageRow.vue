@@ -14,14 +14,16 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     export default {
-        props: ['message', 'editMessage', 'deleteMessage', 'messages', 'delButton'],
+        props: ['message', 'editMessage', 'delButton'],
         methods: {
+            ...mapActions(['removeMessageAction']),
             edit() {
                 this.editMessage(this.message)
             },
             del() {
-                this.deleteMessage(this.message)
+                this.removeMessageAction(this.message)
             }
         }
     }
