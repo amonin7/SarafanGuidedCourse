@@ -10,15 +10,21 @@
                 <v-icon>{{delButton}}</v-icon>
             </v-btn>
         </v-card-actions>
+        <comment-list
+                :comments="message.comments"
+                :messageId="message.id"
+        ></comment-list>
     </v-card>
 </template>
 
 <script>
     import {mapActions} from 'vuex'
     import { mdiDelete } from '@mdi/js'
+    import CommentList from '../comment/CommentList.vue'
 
     export default {
         props: ['message', 'editMessage'],
+        components: { CommentList },
         data() {
             return {
                 delButton: mdiDelete

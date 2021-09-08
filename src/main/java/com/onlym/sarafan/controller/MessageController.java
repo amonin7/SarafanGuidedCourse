@@ -2,6 +2,7 @@ package com.onlym.sarafan.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.onlym.sarafan.domain.Message;
+import com.onlym.sarafan.domain.User;
 import com.onlym.sarafan.domain.Views;
 import com.onlym.sarafan.dto.EventType;
 import com.onlym.sarafan.dto.ObjectType;
@@ -9,6 +10,7 @@ import com.onlym.sarafan.repo.MessageRepo;
 import com.onlym.sarafan.util.WsSender;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -41,8 +43,12 @@ public class MessageController {
     }
 
     @PostMapping
-    public Message create(@RequestBody Message message) {
+    public Message create(
+            @RequestBody Message message,
+            @AuthenticationPrincipal User user
+    ) {
         message.setCreationDate(LocalDateTime.now());
+        message.setAuthor(user);
         Message updated = messageRepo.save(message);
 
         wsSender.accept(EventType.CREATE, updated);
