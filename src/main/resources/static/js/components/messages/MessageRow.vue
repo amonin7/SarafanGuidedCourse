@@ -15,8 +15,15 @@
 
 <script>
     import {mapActions} from 'vuex'
+    import { mdiDelete } from '@mdi/js'
+
     export default {
-        props: ['message', 'editMessage', 'delButton'],
+        props: ['message', 'editMessage'],
+        data() {
+            return {
+                delButton: mdiDelete
+            }
+        },
         methods: {
             ...mapActions(['removeMessageAction']),
             edit() {
