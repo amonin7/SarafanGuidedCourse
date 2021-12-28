@@ -31,7 +31,5 @@
         props: ['comments', 'messageId']
     }
 </script>
-
 <style scoped>
-
 </style>
